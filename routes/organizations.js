@@ -4,7 +4,48 @@ const Organization = require("../models/organization");
 const jwt = require("jsonwebtoken");
 const randomstring = require("randomstring");
 const nodemailer = require("nodemailer");
+const bcrypt=require("bcryptjs")
 const config = require("../config/keys");
+<<<<<<< HEAD
+=======
+
+
+
+router.post('/loginOrg',(req,res,next)=>{
+    password=req.body.password;
+    Orgname=req.body.orgname;
+
+    let fetchedOrganization;
+
+    Organization.findOne({name:Orgname})
+          .then(org=>{
+            if(!org){
+            return  res.status(401).json({message:'Auth Failed'})
+            }
+            fetchedOrganization=org
+            console.log(fetchedOrganization);0
+            return bcrypt.compare(password,fetchedOrganization.password)})
+          .then(result=>{
+            if(!result){
+              return res.status(401).json({
+                message:"Auth Failed"
+              })
+            }
+            const token=jwt.sign({id:fetchedOrganization.id},'this_is_a_secret_string',{expiresIn:"1h"})
+              res.send({
+              token:token,
+              expiresIn:3600,
+              userId:fetchedOrganization._id
+          })
+          }).then(err=>{
+            return res.status(401).json({
+              message:"Auth Failed"
+            })
+          })
+        });
+
+
+>>>>>>> 31ce5660eda98e8fa0e0e92951295c061f5a362b
 // Authenticate
 router.post("/authOrg", (req, res, next) => {
   const email = req.body.username;
@@ -26,26 +67,21 @@ router.post("/authOrg", (req, res, next) => {
           "Organization is found.............password match......................................"
         );
 
-        //genare the token and pass it with responce json
-        const token = jwt.sign(organization.toJSON(), config.secret, {
-          //jwt.sign(payload, secretOrPrivateKey, [options, callback])
-          //payload could be an object literal, buffer or string representing valid JSON.
-          //payload cannot be a plain string but it can
-          expiresIn: 604800 //this token is expires after 1 week
-        });
-
-        res.json({
-          success: true,
-          token: "JWT " + token,
-          organization: {
-            id: Organization._id,
-            name: Organization.name,
-            email: Organization.email,
-            password: Organization.password,
-            address: Organization.address,
-            contact: Organization.contact,
-            regNo: Organization.regNo
-          }
+        const token=jwt.sign({id:organization.id},'this_is_a_secret_string',{expiresIn:"1h"})
+        res.send({
+          successOrg:true,
+        token:token,
+        expiresIn:3600,
+        userId:organization._id,
+        organization: {
+          id: organization._id,
+          name: organization.name,
+          email: organization.email,
+          password: organization.password,
+          address: organization.address,
+          contact: organization.contact,
+          regNo: organization.regNo
+        }
         });
       } else {
         return res.json({ success: false, msg: "Wrong password" });
@@ -115,8 +151,9 @@ router.post("/addorganization", (req, res) => {
       });
     }
   });
-});
+})
 
+module.exports = router
 router.put("/editaccess", function(req, res, next) {
   Organization.findByIdAndUpdate(req.body.id, {blocked: !req.body.blocked}, function(err, post) {
     if (err) {
