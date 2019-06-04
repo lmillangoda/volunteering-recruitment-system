@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const randomstring = require("randomstring");
 const nodemailer = require("nodemailer");
 const config = require("../config/keys");
-
 // Authenticate
 router.post("/authOrg", (req, res, next) => {
   const email = req.body.username;
