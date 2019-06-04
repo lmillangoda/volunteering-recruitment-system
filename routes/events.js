@@ -111,13 +111,24 @@ router.put("/updateEvent/:id",multer({storage:storage}).single("image"),(req,res
 //@desc Get All items
 //@access public
 
+// get all available events filter by current data
 router.get("/allevents", (req, res) => {
-  Event.find().then(events => res.json(events));
+  const query = {
+   date: {
+      $gte: Date.now() //for get the dates which are upcomming from today
+    }
+  };
+  Event.find(query).then(events => res.json(events));
 });
 
-//get events count
+//get available events count
 router.get("/alleventcount", (req, res) => {
-  Event.find().count().then(eventscount => res.json(eventscount));
+  const query = {
+    date: {
+       $gte: Date.now() //for get the dates which are upcomming from today
+     }
+   };
+  Event.find(query).count().then(eventscount => res.json(eventscount));
 });
 
 
@@ -148,7 +159,8 @@ router.post("/addselected", (req, res, next) => {
     rating: req.body.rating,
     image: req.body.image,
     organization: req.body.organization,
-    status: req.body.status
+    status: req.body.status,
+    participation: false
   });
 
   newSelectEvent
