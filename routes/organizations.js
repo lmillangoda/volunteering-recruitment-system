@@ -6,8 +6,6 @@ const randomstring = require("randomstring");
 const nodemailer = require("nodemailer");
 const bcrypt=require("bcryptjs")
 const config = require("../config/keys");
-<<<<<<< HEAD
-=======
 
 
 
@@ -45,7 +43,6 @@ router.post('/loginOrg',(req,res,next)=>{
         });
 
 
->>>>>>> 31ce5660eda98e8fa0e0e92951295c061f5a362b
 // Authenticate
 router.post("/authOrg", (req, res, next) => {
   const email = req.body.username;

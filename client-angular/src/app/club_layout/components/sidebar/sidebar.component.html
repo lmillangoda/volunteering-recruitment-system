@@ -35,15 +35,9 @@
             <li class="nested" [class.expand]="showMenu === 'volunteers'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/club/currentVolunteers']" [routerLinkActive]="['router-link-active']" href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Current Volunteers' | translate }}</span>
-                        </a>
-                    </li>
-                    <li>
                         <a [routerLink]="['/club/allVolunteers']" [routerLinkActive]="['router-link-active']" href="javascript:void(0)">
                             <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'All Volunteers' | translate }}</span>
+                            <span>{{ 'Volunteers' | translate }}</span>
                         </a>
                     </li>
                 </ul>

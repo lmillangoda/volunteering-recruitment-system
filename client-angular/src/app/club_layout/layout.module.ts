@@ -11,7 +11,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NewProjectComponent } from '../club_layout/projects/new-project/new-project.component';
 import { ViewProjectsComponent } from '../club_layout/projects/view-projects/view-projects.component';
-import { CurrentVolunteersComponent } from '../club_layout/volunteers/current-volunteers/current-volunteers.component';
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
 import { ProjectCardComponent } from './projects/view-projects/project-card/project-card.component';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
@@ -38,6 +37,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         ModalModule.forRoot()
 
     ],
-    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, CurrentVolunteersComponent, AllVolunteersComponent,ProjectCardComponent],
+    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, AllVolunteersComponent,ProjectCardComponent,],
 })
 export class LayoutModule {}

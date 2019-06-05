@@ -23,6 +23,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './myservices/auth-interceptor';
+import { VoluntTableComponent } from './volunt-table/volunt-table.component';
 
 
 
@@ -56,7 +57,7 @@ import { AuthInterceptor } from './myservices/auth-interceptor';
 
     ],
 
-    declarations: [AppComponent],
+    declarations: [AppComponent, VoluntTableComponent],
     providers: [AuthGuard, ValidateService, AuthService, EventService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
 
     bootstrap: [AppComponent]

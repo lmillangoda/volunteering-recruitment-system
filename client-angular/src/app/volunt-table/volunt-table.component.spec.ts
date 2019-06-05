@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrentVolunteersComponent } from './current-volunteers.component';
+import { VoluntTableComponent } from './volunt-table.component';
 
-describe('CurrentVolunteersComponent', () => {
-  let component: CurrentVolunteersComponent;
-  let fixture: ComponentFixture<CurrentVolunteersComponent>;
+describe('VoluntTableComponent', () => {
+  let component: VoluntTableComponent;
+  let fixture: ComponentFixture<VoluntTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrentVolunteersComponent ]
+      declarations: [ VoluntTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrentVolunteersComponent);
+    fixture = TestBed.createComponent(VoluntTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

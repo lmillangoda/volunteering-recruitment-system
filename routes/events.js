@@ -42,7 +42,7 @@ const storage=multer.diskStorage({
 
 router.post('/addevent',orgAuth,multer({storage:storage}).single("image"),(req, res, next) => {
   const url=req.protocol+'://'+req.get("host");
-
+  console.log(req)
   console.log(res.user)
   let newEvent = new Event({
   //req.body mean the value is post using text field or other

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
+import {VoluntTableComponent } from './volunt-table/volunt-table.component'
 
 const routes: Routes = [
     { path: '', loadChildren: './user-layout/user-layout.module#UserLayoutModule', canActivate: [AuthGuard]},
@@ -16,7 +17,8 @@ const routes: Routes = [
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },
     { path: 'access-denied', loadChildren: './access-denied/access-denied.module#AccessDeniedModule' },
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
-    { path: '**', redirectTo: 'not-found' }
+    { path: 'club/allVolunteers/viewvolunteers/:_id', component :VoluntTableComponent },
+    //{ path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({
