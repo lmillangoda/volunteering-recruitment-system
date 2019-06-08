@@ -4,6 +4,8 @@ import { LayoutComponent } from './layout.component';
 import { NewProjectComponent } from '../club_layout/projects/new-project/new-project.component';
 import { ViewProjectsComponent } from '../club_layout/projects/view-projects/view-projects.component';
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProjectTableComponent } from './projects/project-table/project-table.component';
 
 const routes: Routes = [
     {
@@ -16,6 +18,8 @@ const routes: Routes = [
             { path: 'newProject', component : NewProjectComponent },
             { path: 'viewProject', component : ViewProjectsComponent },
             { path: 'allVolunteers', component : AllVolunteersComponent },
+            { path: 'profile', component : ProfileComponent },
+            { path: 'eventTable', component : ProjectTableComponent },
             {path:  'edit/:eventId',component:NewProjectComponent},
         ]
     }

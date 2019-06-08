@@ -31,6 +31,7 @@ const users = require("./routes/users");
 const events = require("./routes/events");
 const admin = require("./routes/admin");
 const organizations = require("./routes/organizations");
+const selectevents = require("./routes/selectevents");
 
 // Port Number
 const port = 3000;
@@ -54,6 +55,7 @@ app.use("/users", users);
 app.use("/organizations", organizations);
 app.use("/events", events);
 app.use("/admin", admin);
+app.use("/selectevent", selectevents);
 app.use("/images",express.static(path.join("images")));
 
 // Index Route

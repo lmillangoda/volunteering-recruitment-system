@@ -11,12 +11,15 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NewProjectComponent } from '../club_layout/projects/new-project/new-project.component';
 import { ViewProjectsComponent } from '../club_layout/projects/view-projects/view-projects.component';
+import { ProfileComponent } from '../club_layout/profile/profile.component';
+
 import { AllVolunteersComponent } from '../club_layout/volunteers/all-volunteers/all-volunteers.component';
 import { ProjectCardComponent } from './projects/view-projects/project-card/project-card.component';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ProjectTableComponent } from './projects/project-table/project-table.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 
@@ -36,7 +39,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         ModalModule.forRoot(),
         
     ],
-    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, AllVolunteersComponent,ProjectCardComponent],
-
+    declarations: [LayoutComponent, SidebarComponent , ProjectTableComponent,NewProjectComponent,ProfileComponent, HeaderComponent, ViewProjectsComponent, AllVolunteersComponent,ProjectCardComponent],
 })
 export class LayoutModule {}
