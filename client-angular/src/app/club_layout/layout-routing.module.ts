@@ -16,7 +16,7 @@ const routes: Routes = [
             { path: 'newProject', component : NewProjectComponent },
             { path: 'viewProject', component : ViewProjectsComponent },
             { path: 'allVolunteers', component : AllVolunteersComponent },
-            {path:  'edit/:eventId',component:NewProjectComponent}
+            {path:  'edit/:eventId',component:NewProjectComponent},
         ]
     }
 ];

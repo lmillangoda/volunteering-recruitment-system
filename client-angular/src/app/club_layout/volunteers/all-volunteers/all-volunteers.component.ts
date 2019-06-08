@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { EventService } from 'src/app/myservices/event.service';
 import { Router } from '@angular/router';
+import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-all-volunteers',
@@ -11,9 +12,13 @@ export class AllVolunteersComponent implements OnInit {
   id: string;
   events: any = [];
   eventsUnchanged: any = [];
+  modalRef: BsModalRef;
+  config = {
+    animated: true
 
+  };
 
-  constructor(private eventservice: EventService, private router: Router) { }
+  constructor(private eventservice: EventService, private router: Router,private modalService: BsModalService) { }
 
   ngOnInit() {
     const data = localStorage.getItem('user');
@@ -35,6 +40,15 @@ export class AllVolunteersComponent implements OnInit {
 
     });
   }
+
+  openModal(template: TemplateRef<any>,id) {
+    this.modalRef = this.modalService.show(template, this.config);
+    this.setModalClass();
+  }
+  setModalClass() {
+    this.modalRef.setClass('modal-lg');
+  }
+
 
 
 }

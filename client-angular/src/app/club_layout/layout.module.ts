@@ -21,7 +21,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 
-
 @NgModule({
     imports: [
         CommonModule,
@@ -34,9 +33,10 @@ import { AlertModule } from 'ngx-bootstrap/alert';
         BsDatepickerModule.forRoot(),
         PopoverModule.forRoot(),
         AlertModule.forRoot(),
-        ModalModule.forRoot()
-
+        ModalModule.forRoot(),
+        
     ],
-    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, AllVolunteersComponent,ProjectCardComponent,],
+    declarations: [LayoutComponent, SidebarComponent , NewProjectComponent, HeaderComponent, ViewProjectsComponent, AllVolunteersComponent,ProjectCardComponent],
+
 })
 export class LayoutModule {}
