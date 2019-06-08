@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const selectevents = require("../models/selecevents");
+const selectevents = require("../models/selectevent");
 const users = require("../models/user");
 const jwt = require("jsonwebtoken");
 var eventvols = [];
