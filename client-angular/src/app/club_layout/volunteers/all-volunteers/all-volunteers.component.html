@@ -13,7 +13,6 @@
                     <div class="card-header bg-dark text-white">
                       <h3>{{event.title}}</h3>
                     </div>
-                    <img style = "height:80px" [src]="event.image" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
                       <p class="card-text">{{event.description}}</p>
                     <ul class="list-group list-group-flush">
@@ -23,7 +22,7 @@
                     </ul>
                     </div>
                     <div class = "card-footer">
-                      <button type="button" class="btn btn-primary" (click)="openModal(template, {{event._id}})">Volunteer List</button>
+                      <button type="button" class="btn btn-primary" (click)="openModal(template, event._id)">Volunteer List</button>
                     </div>
                   </div>
               </div>
@@ -38,7 +37,24 @@
       </button>
     </div>
     <div class="modal-body">
-      Just a modal with a bunch of words inside, nothing serious.
+      <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Participation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
     </div>
   </ng-template>
   
