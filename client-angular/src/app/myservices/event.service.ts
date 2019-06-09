@@ -79,9 +79,6 @@ getEventbyOrganization(orgid){
   return this.http.get('http://localhost:3000/events/selecteventbyorg/' +orgid);
 }
 
-
-
-
   getAllEventCount() {
     // let headers = new HttpHeaders();
     return this.http.get('http://localhost:3000/events/alleventcount');

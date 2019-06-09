@@ -18,6 +18,12 @@ export class AllVolunteersComponent implements OnInit {
     animated: true
 
   };
+ volunteersun: any = [];
+ volunteers: any = [];
+ user: any;
+ event: any;
+ _id: any;
+ volunteers2:any =[];
 
   constructor(private eventservice: EventService, private router: Router,private modalService: BsModalService, private selectservice: SelecteventsService) { }
 
@@ -43,13 +49,40 @@ export class AllVolunteersComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>,id) {
-    this.selectservice.getAllEventVolunteers(id);
+    this.volunteers2 = []
     this.modalRef = this.modalService.show(template, this.config);
     this.setModalClass();
-    console.log(id);
+    this.selectservice.getAllEventVolunteers(id).subscribe(res =>{
+      this.volunteersun = res;
+      console.log(this.volunteersun,"what")
+      this.volunteers = this.volunteersun.map(item => ({
+        id: item._id.toString(),
+        userid: item.userid,
+        participation: item.participation
+      }))
+      console.log(this.volunteers);
+
+      var i;
+      for (i = 0; i < this.volunteers.length; i++) { 
+      this._id = this.volunteers[i].userid;
+      console.log(this._id);
+      this.selectservice.getEventVolunteer(this._id).subscribe(res =>{
+        this.user = res;
+        this.volunteers2.push(this.user[0]);
+        console.log(this.volunteers2)
+      });
+      }
+    });
   }
+
+
   setModalClass() {
     this.modalRef.setClass('modal-lg');
+  }
+
+  confirm(i){
+    this.event = this.volunteersun[i];
+    this.selectservice.confirmParticipation(event);
   }
 
 
