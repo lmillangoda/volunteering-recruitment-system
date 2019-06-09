@@ -49,27 +49,27 @@ export class AllVolunteersComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>,id) {
+    this.volunteersun = []
     this.volunteers2 = []
+    this.volunteers =[]
     this.modalRef = this.modalService.show(template, this.config);
     this.setModalClass();
     this.selectservice.getAllEventVolunteers(id).subscribe(res =>{
+      console.log(res)
       this.volunteersun = res;
-      console.log(this.volunteersun,"what")
       this.volunteers = this.volunteersun.map(item => ({
         id: item._id.toString(),
         userid: item.userid,
         participation: item.participation
       }))
-      console.log(this.volunteers);
+
 
       var i;
       for (i = 0; i < this.volunteers.length; i++) { 
       this._id = this.volunteers[i].userid;
-      console.log(this._id);
-      this.selectservice.getEventVolunteer(this._id).subscribe(res =>{
-        this.user = res;
+        this.selectservice.getEventVolunteer(this._id).subscribe(resp =>{
+        this.user = resp;
         this.volunteers2.push(this.user[0]);
-        console.log(this.volunteers2)
       });
       }
     });
@@ -82,7 +82,7 @@ export class AllVolunteersComponent implements OnInit {
 
   confirm(i){
     this.event = this.volunteersun[i];
-    this.selectservice.confirmParticipation(event);
+    this.selectservice.confirmParticipation(this.event);
   }
 
 

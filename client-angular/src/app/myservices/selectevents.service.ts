@@ -20,6 +20,7 @@ getEventVolunteer(id: string) {
  }
 
  confirmParticipation(event){
+   console.log(event,"event");
    return this.http.put('http://localhost:3000/selectevent/confirmparticipation/'+event._id,event).subscribe(response=>{
     console.log(response);
   });

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const orgAuth=require("../middleware/orgAuth");
-
+const selectevents = require("../models/selectevent");
 
 const config = require('../config/keys');
 const multer=require("multer");
@@ -39,6 +39,19 @@ const storage=multer.diskStorage({
 //@route POST events/addevent
 //@desc create a Event
 //@access public
+
+router.get('/geteventvolunteers/:id',(req,res)=>{
+  console.log(req.params.id)
+  const query = {eventid: req.params.id.tostring()}
+  console.log(query)
+  selectevents.find(query)
+  .then(selectevents =>{
+     res.json(selectevents);
+    // console.log(res);
+  }
+     );
+});
+
 
 router.post('/addevent',orgAuth,multer({storage:storage}).single("image"),(req, res, next) => {
   const url=req.protocol+'://'+req.get("host");
@@ -264,7 +277,6 @@ router.get("/selecteventbyorg/:id", (req, res) => {
   .populate("organization","username")
   .then(events =>{
      res.json(events)
-     console.log(events)
   }
      );
 });
