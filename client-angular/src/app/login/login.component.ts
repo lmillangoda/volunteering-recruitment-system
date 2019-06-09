@@ -40,7 +40,7 @@ if (this.username == "admin" && this.password == "admin" ){
           console.log('.......................', data, '..........................');
           if (data['successOrg']) {
             this.authService.storeUserData(data['token'], data['organization']);
-            this.router.navigate(['/club/dashboard']);
+            this.router.navigate(['/club/clubdashboard']);
             // alert('login sucess');
           } else { 
             this.router.navigate(['login']);
